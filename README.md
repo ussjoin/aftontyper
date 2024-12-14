@@ -2,11 +2,11 @@
 
 ## What
 
-For `$reason`, my son currently hears and understands spoken language excellently, but speaks only a few words. (Yes, he *does* see a ton of experts! They're currently models of shrugging and waving vaguely at [his explosive entry into the world](https://vimeo.com/772624589/0292a5e728) when saying "uh... we don't know why he's doing this.") He speaks increasingly fluent [ASL](https://en.wikipedia.org/wiki/American_Sign_Language).
+For `$reasons`, my (2.5yo) son currently hears and understands spoken language excellently, but speaks only a few words. He speaks increasingly fluent [ASL](https://en.wikipedia.org/wiki/American_Sign_Language). (Yes, he *does* see a ton of experts! They're currently shrugging and waving vaguely at [my son's explosive entry into the world](https://vimeo.com/772624589/0292a5e728) when saying "uh... we don't know why he's doing this, but he sure is a singular child.") 
 
 Long story long, he's now learning to read English before learning to speak English, and he loves to come type on my keyboard. I gave him his own keyboard, but he doesn't like that nothing _happens_ when he types on a keyboard disconnected from everything. So I decided to build him a screenless typing device where he gets output when he provides input.
 
-If he uses this to teach himself to _write_ before he speaks English, well, that'll just be a whole new thing for all the experts to consider. :-)
+If he uses this to teach himself to _write_ before he speaks English, well, that'll just be a whole new thing for all the experts to consider. I think they'll [have kittens](https://dictionary.cambridge.org/us/dictionary/english/have-kittens)!
 
 
 ## Components
@@ -25,7 +25,39 @@ The Bioenno battery comes with its power output terminals crimped in [Anderson P
 
 You need the Arduino environment, and then you need to add a bunch of board types and libraries to it. The header of [Arduino/aftontyper/aftontyper.ino](Arduino/aftontyper/aftontyper.ino) has all the details to the level of "click here, then there." You'll need to make sure that [Arduino/aftontyper/usbh_helper.h](Arduino/aftontyper/usbh_helper.h) is in the same folder as the `.ino`.
 
-Compile, upload to board, plug it in.
+Compile, upload to board, plug it in. You can run the board and keyboard just fine from standard USB power and don't need to use the Verter module for testing (other than testing the power supply). The thermal printer you can run direct from the battery (which is what I do in production) or from a 6v-9v bench power supply; note that when printing wide dark lines, **it peaks over 2A of instantaneous current** (around 2.2A I think), so make sure your supply can handle that.
+
+### Wiring Diagram
+
+It's pretty self-explanatory, but here's what I did.
+Note that the RP2040 pins are just set in code; they're not special pins of any kind. Change them with the appropriate lines in the `.ino` file.
+
+```
+                          ┌─────────────────────────┐                      
+  ┌────────────────┐      │         ┌─────────────┐ │                      
+  │                │      │         │  6v Battery │ │                      
+  │ Comms      Pow │      │         │             │ │                      
+  ├──────┐    ┌────┤      │         │  +     -    │ │                      
+  │T R G │    │ + -│      │         └──┬─────┬────┘ │                      
+  └┬──┬─┬┴────┴─┬─┬┘      │            │     │      │                      
+   │  │ └───┐   │ └───────┘   ┌────────┴┐    ├──────┘                      
+   │  │     │   │             │         │    │                             
+   │  │     │   └──────────┬──┼ Switch  │    │                             
+   │  │     └─────┐        │  └─────────┘    │                             
+   │  └──────┐    │        │                 │            ┌─────────────┬─┐
+   │         │    │        │                 └────────────┤-            │U│
+   └────┐    │    │        │                              │   Verter    │S│
+        │    │    │        └──────────────────────────────┤+            │B│
+  ┌───┬─┴────┴────┴────┬────┐        ┌────────────┐       └─────────────┴─┤
+  │ U │ 24   25   G    │  H │        │            │                       │
+┌─┤ S │                │U o │        │            │                       │
+│ │ B │   RP2040       │S s ┼────────┤ Keyboard   │                       │
+│ │ C │   Feather      │B t │        │            │                       │
+│ └───┴────────────────┴────┘        └────────────┘                       │
+└─────────────────────────────────────────────────────────────────────────┘
+```
+
+(Thanks, [ASCIIflow](https://asciiflow.com/)!)
 
 ## Features
 
