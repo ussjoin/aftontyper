@@ -33,28 +33,25 @@ It's pretty self-explanatory, but here's what I did.
 Note that the RP2040 pins are just set in code; they're not special pins of any kind. Change them with the appropriate lines in the `.ino` file.
 
 ```
-                          ┌─────────────────────────┐                      
-  ┌────────────────┐      │         ┌─────────────┐ │                      
-  │                │      │         │  6v Battery │ │                      
-  │ Comms      Pow │      │         │             │ │                      
-  ├──────┐    ┌────┤      │         │  +     -    │ │                      
-  │T R G │    │ + -│      │         └──┬─────┬────┘ │                      
-  └┬──┬─┬┴────┴─┬─┬┘      │            │     │      │                      
-   │  │ └───┐   │ └───────┘   ┌────────┴┐    ├──────┘                      
-   │  │     │   │             │         │    │                             
-   │  │     │   └──────────┬──┼ Switch  │    │                             
-   │  │     └─────┐        │  └─────────┘    │                             
-   │  └──────┐    │        │                 │            ┌─────────────┬─┐
-   │         │    │        │                 └────────────┤-            │U│
-   └────┐    │    │        │                              │   Verter    │S│
-        │    │    │        └──────────────────────────────┤+            │B│
-  ┌───┬─┴────┴────┴────┬────┐        ┌────────────┐       └─────────────┴─┤
-  │ U │ 24   25   G    │  H │        │            │                       │
-┌─┤ S │                │U o │        │            │                       │
-│ │ B │   RP2040       │S s ┼────────┤ Keyboard   │                       │
-│ │ C │   Feather      │B t │        │            │                       │
-│ └───┴────────────────┴────┘        └────────────┘                       │
-└─────────────────────────────────────────────────────────────────────────┘
+  ┌────────────────┐  ┌──────────────────────┐
+  │ Comms      Pow │  │       ┌────────────┐ │
+  ├─────┐    ┌─────┤  │       │ 6v Battery │ │
+  │T R G│    │ + - │  │       │ +       -  │ │
+  └┬─┬─┬┴────┴─┬─┬─┘  │       └─┬───────┬──┘ │
+   │ │ │       │ └────┘  ┌──────┴─┐     ├────┘
+   │ │ │       └───────┬─┤ Switch │     │
+   │ │ │               │ └────────┘     │
+   │ │ └──────────┐    │                │ ┌────────────┬─┐
+   │ └───────┐    │    │                └─┤-           │U│
+   └────┐    │    │    │                  │   Verter   │S├─┐
+        │    │    │    └──────────────────┤+           │B│ │
+  ┌───┬─┴────┴────┴─┬────┐                └────────────┴─┘ │
+  │ U │ 24   25   G │  H │                                 │
+┌─┤ S │             │U o │   ┌──────────┐                  │
+│ │ B │   RP 2040   │S s ├───┤ Keyboard │                  │
+│ │ C │   Feather   │B t │   └──────────┘                  │
+│ └───┴─────────────┴────┘                                 │
+└──────────────────────────────────────────────────────────┘
 ```
 
 (Thanks, [ASCIIflow](https://asciiflow.com/)!)
@@ -65,9 +62,9 @@ Note that the RP2040 pins are just set in code; they're not special pins of any 
 * Multiple spacebar invocations are combined to one, and it trims spaces off the ends of lines when excreting lines.
 * Automatically spits out a line to the printer when the buffer gets full (length set in `buffer_length`). If you change the font size or typeface, you'll probably want to adjust this so that the lines are "full" looking.
 
-Other than that, very little. This is mostly a proof of how little it takes since Adafruit did all the hard work, and I am very grateful to them. :-)
+Other than that, very little. This is mostly a proof of how little it takes since Adafruit did all the hard work (both in making the microcontroller, and then in making the demo code), and I am very grateful to them. :-) Buy their stuff!
 
 ## License
 
-MIT because ~70% of the code is Adafruit's example code that I cut down, and I don't want to cause license incompatibilities.
+MIT because ~70% of the code is Adafruit's MIT'd example code that I cut down, and I don't want to cause license incompatibilities.
 
