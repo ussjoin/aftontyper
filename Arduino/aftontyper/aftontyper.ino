@@ -47,6 +47,8 @@
 SoftwareSerial mySerial(RX_PIN, TX_PIN); // Declare SoftwareSerial obj first
 Adafruit_Thermal printer(&mySerial);     // Pass addr to printer constructor
 
+bool PLEASE_PRINT = false;
+
 void setup() {
   Serial.begin(115200);
 
@@ -77,6 +79,11 @@ void loop() {
 
 void loop() {
   // nothing to do
+  if (PLEASE_PRINT)
+  {
+    wicked_printme();
+    PLEASE_PRINT = false;
+  }
 }
 
 //------------- Core1 -------------//
@@ -139,6 +146,8 @@ extern "C"
   uint8_t printing_index = 0;
   unsigned long last_time;
 
+  char actual_output_buffer[buffer_length+1];
+
   void clear_buffer()
   {
     for (uint8_t i = 0; i < buffer_length+1; i++)
@@ -150,9 +159,6 @@ extern "C"
     //Set up initial key debounce time
     last_time = micros();
     last_unshifted = '0';
-
-    // Put printer to sleep (on initial or after a print)
-    printer.sleep();
   }
 
   void wicked_printme()
@@ -162,11 +168,14 @@ extern "C"
     printer.setFont('A');
     printer.setSize('L');        // Set type size, accepts 'S', 'M', 'L'
 
-    printer.println(printing_buffer);
+    printer.println(actual_output_buffer);
     
     // Send it to Arduino IDE as well
-    Serial.println(printing_buffer);
-    clear_buffer();
+    Serial.println("ACTUALLY PRINTING:");
+    Serial.println(actual_output_buffer);
+    Serial.println();
+    // Put printer to sleep (after a print)
+    printer.sleep();
   }
 
   void wicked_buffer(hid_keyboard_report_t const *original_report) {
@@ -222,7 +231,9 @@ extern "C"
 
         if (print_now)
         {
-          wicked_printme();
+          strcpy(actual_output_buffer, printing_buffer);
+          PLEASE_PRINT = true;
+          clear_buffer();
         }
         break;
       }
