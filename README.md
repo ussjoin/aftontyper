@@ -1,5 +1,7 @@
 # AftonTyper
 
+![AftonTyper hero movie](Images/AftonTyper-Movie.jpg)
+
 ## What
 
 For `$reasons`, my (2.5yo) son currently hears and understands spoken language excellently, but speaks only a few words. He speaks increasingly fluent [ASL](https://en.wikipedia.org/wiki/American_Sign_Language). (Yes, he *does* see a ton of experts! They're currently shrugging and waving vaguely at [my son's explosive entry into the world](https://vimeo.com/772624589/0292a5e728) when saying "uh... we don't know why he's doing this, but he sure is a singular child.") 
@@ -21,6 +23,16 @@ If he uses this to teach himself to _write_ before he speaks English, well, that
 * Screws: I used short M2.5 machine screws, washers, and nuts to attach the 3D printed box to the keyboard (I just popped the number keys off the keyboard and then drilled attachment holes). The holes in the 3D-printed box could have been smaller, but then the alignment would have been tighter; this works sufficiently for my needs. (You definitely don't want to glue it, because toddler toy; it's entirely possible I'll need to print another box in a few months depending on how hard it gets dropped.) The screw holes are positioned with the intent that the keyboard and box share the same bottom plane, just to avoid balance issues.
 
 The Bioenno battery comes with its power output terminals crimped in [Anderson Powerpole](), but if that's not a format you like, just pop the contacts out of the plug, cut, and do something else that makes you happier.
+
+## Assembly
+
+![AftonTyper hero image](Images/AftonTyper.jpg)
+Top view
+
+![AftonTyper hero image](Images/AftonTyper-Side.jpg)
+Side view, showing power switch
+
+That's really all there is to it; it all fits easily in the box (but I previously tried a slightly smaller box and it wasn't *quite* big enough for the battery).
 
 
 ## How to Run
@@ -71,3 +83,6 @@ Other than that, very little. This is mostly a proof of how little it takes sinc
 
 MIT because ~70% of the code is Adafruit's MIT'd example code that I cut down, and I don't want to cause license incompatibilities.
 
+## Where?
+
+"Wait, don't you work for GitLab? Why is this here?" You're right; I wanted to put it on GitLab, but I [couldn't get a formal confirmation](https://gitlab.com/gitlab-com/content-sites/handbook/-/merge_requests/10700) that the (standard) IP assignment that GitLab uses wouldn't eat personal IP like this. So it's here!
