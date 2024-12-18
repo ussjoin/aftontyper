@@ -1,6 +1,6 @@
 # AftonTyper
 
-![AftonTyper hero movie](Images/AftonTyper-Movie.jpg)
+![AftonTyper hero movie](Images/AftonTyper-Movie.mp4)
 
 ## What
 
