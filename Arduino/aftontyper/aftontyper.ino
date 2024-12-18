@@ -23,9 +23,6 @@
  any redistribution
 *********************************************************************/
 
-
-
-
 /* This example demonstrates use of both device and host, where
  * - Device run on native usb controller (roothub port0)
  * - Host depending on MCUs run on either:
@@ -55,15 +52,6 @@ void setup() {
 
   mySerial.begin(19200);  // Initialize SoftwareSerial for printer
   printer.begin();        // Init printer (same regardless of serial type)
-
-  // The following calls are in setup(), but don't *need* to be.  Use them
-  // anywhere!  They're just here so they run one time and are not printed
-  // over and over (which would happen if they were in loop() instead).
-  // Some functions will feed a line when called, this is normal.
-
-  // Font options
-  printer.setFont('A');
-  printer.setSize('L');        // Set type size, accepts 'S', 'M', 'L'
 
 #if defined(CFG_TUH_MAX3421) && CFG_TUH_MAX3421
   // init host stack on controller (rhport) 1
@@ -164,14 +152,20 @@ extern "C"
     last_unshifted = '0';
 
     // Put printer to sleep (on initial or after a print)
+    printer.sleep();
   }
 
   void wicked_printme()
   {
-    //Serial.printf(printing_buffer);
-    Serial.println(printing_buffer);
     printer.wake();       // MUST wake() before printing again, even if reset
+    // Font options
+    printer.setFont('A');
+    printer.setSize('L');        // Set type size, accepts 'S', 'M', 'L'
+
     printer.println(printing_buffer);
+    
+    // Send it to Arduino IDE as well
+    Serial.println(printing_buffer);
     clear_buffer();
   }
 
