@@ -1,6 +1,10 @@
 # AftonTyper
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ykdp6Gb4HfA?si=sj6ymUS5hUXqTznM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+[![AftonTyper hero image](Images/AftonTyper.jpg)](https://www.youtube.com/watch?v=ykdp6Gb4HfA)
+Top view
+
+![AftonTyper hero image](Images/AftonTyper-Side.jpg)
+Side view, showing power switch
 
 ## What
 
@@ -23,17 +27,6 @@ If he uses this to teach himself to _write_ before he speaks English, well, that
 * Screws: I used short M2.5 machine screws, washers, and nuts to attach the 3D printed box to the keyboard (I just popped the number keys off the keyboard and then drilled attachment holes). The holes in the 3D-printed box could have been smaller, but then the alignment would have been tighter; this works sufficiently for my needs. (You definitely don't want to glue it, because toddler toy; it's entirely possible I'll need to print another box in a few months depending on how hard it gets dropped.) The screw holes are positioned with the intent that the keyboard and box share the same bottom plane, just to avoid balance issues.
 
 The Bioenno battery comes with its power output terminals crimped in [Anderson Powerpole](), but if that's not a format you like, just pop the contacts out of the plug, cut, and do something else that makes you happier.
-
-## Assembly
-
-![AftonTyper hero image](Images/AftonTyper.jpg)
-Top view
-
-![AftonTyper hero image](Images/AftonTyper-Side.jpg)
-Side view, showing power switch
-
-That's really all there is to it; it all fits easily in the box (but I previously tried a slightly smaller box and it wasn't *quite* big enough for the battery).
-
 
 ## How to Run
 
