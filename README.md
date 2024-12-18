@@ -1,6 +1,6 @@
 # AftonTyper
 
-![AftonTyper hero movie](Images/AftonTyper-Movie.mp4)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ykdp6Gb4HfA?si=sj6ymUS5hUXqTznM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## What
 
